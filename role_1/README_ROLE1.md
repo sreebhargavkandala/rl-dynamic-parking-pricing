@@ -1,12 +1,12 @@
-# ROLE 1: RL Problem Formulation + Environment - Complete Deliverables
+#   RL Problem Formulation + Environment - Complete Deliverables
 
 ## Overview
 
-This folder contains all deliverables for **ROLE 1: RL Problem Formulation + Environment**.
+This folder contains all deliverables for **  RL Problem Formulation + Environment**.
 
 ## Files in This Role
 
-### 1. **env.py** (380+ lines)
+### 1. **env.py**  
 Complete implementation of `ParkingPricingEnv` - a Gymnasium-compatible RL environment.
 
 **Contains:**
@@ -34,7 +34,7 @@ obs, reward, terminated, truncated, info = env.step([10.0])  # price = $10
 metrics = env.get_episode_metrics()
 ```
 
-### 2. **state_action_documentation.py** (500+ lines)
+### 2. **state_action_documentation.py**  
 Comprehensive documentation of MDP formulation.
 
 **Contains:**
@@ -70,7 +70,7 @@ Comprehensive documentation of MDP formulation.
 python state_action_documentation.py  # Prints full documentation
 ```
 
-### 3. **metrics.py** (400+ lines)
+### 3. **metrics.py**  
 Complete implementation of all metric functions.
 
 **Contains:**
@@ -105,7 +105,7 @@ print(metrics)  # Pretty-printed output
 print(metrics.to_dict())  # Convert to dict
 ```
 
-### 4. **reward_function.py** (400+ lines)
+### 4. **reward_function.py**  
 Complete reward function implementation and analysis.
 
 **Contains:**
@@ -156,7 +156,7 @@ rewards = reward_fn.batch_compute_reward(
 )
 ```
 
-### 5. **README_ROLE1.md** (this file)
+### 5. **README_ROLE1.md**  
 Overview and usage guide for ROLE 1.
 
 ## ROLE 1 Deliverables Checklist
@@ -182,7 +182,6 @@ Overview and usage guide for ROLE 1.
 - Metric tracking and computation
 
 ✅ **State/Action Documentation**
-- 500+ lines explaining each dimension
 - Normalization strategies
 - Real-world context
 - Price elasticity model
