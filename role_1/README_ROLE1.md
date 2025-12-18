@@ -1,12 +1,12 @@
-# ROLE 1: RL Problem Formulation + Environment - Complete Deliverables
+#   RL Problem Formulation + Environment - Complete Deliverables
 
 ## Overview
 
-This folder contains all deliverables for **ROLE 1: RL Problem Formulation + Environment**.
+This folder contains all deliverables for **  RL Problem Formulation + Environment**.
 
 ## Files in This Role
 
-### 1. **env.py** (380+ lines)
+### 1. **env.py** 
 Complete implementation of `ParkingPricingEnv` - a Gymnasium-compatible RL environment.
 
 **Contains:**
