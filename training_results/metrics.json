@@ -1,0 +1,9 @@
+{
+  "final_avg_reward": 4219.875787078562,
+  "best_reward": 4651.778135927709,
+  "overall_avg": 3789.637533195243,
+  "eval_avg": 4217.992747720974,
+  "eval_std": 267.1810425009114,
+  "total_episodes": 500,
+  "training_time_sec": 134.1655511856079
+}

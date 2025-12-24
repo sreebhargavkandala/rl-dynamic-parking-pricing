@@ -5,9 +5,7 @@ This file provides comprehensive documentation of the state and action spaces
 for the Dynamic Parking Pricing Environment.
 """
 
-# ==============================================================================
-# STATE SPACE DOCUMENTATION
-# ==============================================================================
+
 
 STATE_SPACE_DOCUMENTATION = """
 STATE SPACE DEFINITION
@@ -80,9 +78,7 @@ CONTINUITY & DIMENSIONALITY:
 - This is the curse of dimensionality
 """
 
-# ==============================================================================
-# ACTION SPACE DOCUMENTATION
-# ==============================================================================
+
 
 ACTION_SPACE_DOCUMENTATION = """
 ACTION SPACE DEFINITION
@@ -143,9 +139,7 @@ Interpretation:
 - 10% price increase → 5% occupancy decrease
 """
 
-# ==============================================================================
-# MDP MATHEMATICS
-# ==============================================================================
+
 
 MDP_MATHEMATICS = """
 MARKOV DECISION PROCESS (MDP) MATHEMATICAL FORMULATION
@@ -225,9 +219,7 @@ EPISODE STRUCTURE:
    - Return: G_t = Σ γᵏ r_{t+k} for k=0 to T-t
 """
 
-# ==============================================================================
-# WHY NON-TABULAR RL? MATHEMATICAL JUSTIFICATION
-# ==============================================================================
+
 
 CURSE_OF_DIMENSIONALITY = """
 CURSE OF DIMENSIONALITY: Why Tabular RL is Infeasible
@@ -335,9 +327,7 @@ Implementing RL from scratch (without libraries) demonstrates:
 ✓ Implementation skill (PyTorch, backpropagation, optimization)
 """
 
-# ==============================================================================
-# METRICS FUNCTIONS
-# ==============================================================================
+
 
 METRICS_DOCUMENTATION = """
 EVALUATION METRICS FOR ROLE 1

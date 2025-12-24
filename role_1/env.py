@@ -489,3 +489,7 @@ if __name__ == "__main__":
             print(f"{key:.<40} {value*100:>11.1f}%")
         else:
             print(f"{key:.<40} {value:>12.4f}")
+
+
+
+

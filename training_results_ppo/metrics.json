@@ -1,0 +1,20 @@
+{
+  "algorithm": "PPO",
+  "final_avg_reward": 273.4876301701606,
+  "best_reward": 329.40262913282766,
+  "overall_avg": 221.2308411366858,
+  "eval_avg": 119.06021756371658,
+  "eval_std": 4.4993329449130135,
+  "total_episodes": 500,
+  "training_time_sec": 113.85790514945984,
+  "hyperparameters": {
+    "hidden_dim": 256,
+    "policy_lr": 0.0003,
+    "value_lr": 0.001,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_ratio": 0.2,
+    "entropy_coef": 0.01,
+    "num_epochs": 4
+  }
+}
