@@ -1,0 +1,68 @@
+{
+  "Fixed Price ($5.00)": {
+    "strategy_name": "Fixed Price ($5.00)",
+    "num_episodes": 10,
+    "avg_revenue": 121560.22,
+    "std_revenue": 3956.71,
+    "mean_occupancy": 0.8447,
+    "std_occupancy": 0.0274,
+    "mean_price": 5.0,
+    "price_volatility": 0.0,
+    "mean_reward": 1211.26
+  },
+  "Fixed Price ($10.00)": {
+    "strategy_name": "Fixed Price ($10.00)",
+    "num_episodes": 10,
+    "avg_revenue": 237051.11,
+    "std_revenue": 8785.46,
+    "mean_occupancy": 0.8237,
+    "std_occupancy": 0.0304,
+    "mean_price": 10.0,
+    "price_volatility": 0.0,
+    "mean_reward": 2369.52
+  },
+  "Time-Based ($3/$10)": {
+    "strategy_name": "Time-Based ($3/$10)",
+    "num_episodes": 10,
+    "avg_revenue": 153976.93,
+    "std_revenue": 4086.91,
+    "mean_occupancy": 0.8469,
+    "std_occupancy": 0.0283,
+    "mean_price": 5.94,
+    "price_volatility": 0.5823,
+    "mean_reward": 1533.05
+  },
+  "Random Policy": {
+    "strategy_name": "Random Policy",
+    "num_episodes": 10,
+    "avg_revenue": 243805.04,
+    "std_revenue": 9227.45,
+    "mean_occupancy": 0.8236,
+    "std_occupancy": 0.0324,
+    "mean_price": 10.22,
+    "price_volatility": 4.6254,
+    "mean_reward": 2248.78
+  },
+  "Demand-Based (Rule)": {
+    "strategy_name": "Demand-Based (Rule)",
+    "num_episodes": 10,
+    "avg_revenue": 145323.15,
+    "std_revenue": 7417.73,
+    "mean_occupancy": 0.8505,
+    "std_occupancy": 0.0252,
+    "mean_price": 5.5,
+    "price_volatility": 0.02410000003874302,
+    "mean_reward": 1447.13
+  },
+  "RL Agent (A2C)": {
+    "strategy_name": "RL Agent (A2C)",
+    "num_episodes": 10,
+    "avg_revenue": 422064.34,
+    "std_revenue": 27765.63,
+    "mean_occupancy": 0.7337,
+    "std_occupancy": 0.0481,
+    "mean_price": 43.40999984741211,
+    "price_volatility": 0.4442000091075897,
+    "mean_reward": 4222.41
+  }
+}

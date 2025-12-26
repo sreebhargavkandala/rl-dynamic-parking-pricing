@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-12-26T20:27:15.185805",
+  "training_episodes": 100,
+  "final_reward": 46.741718293763306,
+  "best_reward": 73.03356112601519,
+  "avg_reward_last_10": 45.533945843648794,
+  "avg_price_final": 4.546749093466334,
+  "avg_occupancy_final": 0.7419368981686453,
+  "avg_revenue_final": 319.30139896370713
+}

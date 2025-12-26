@@ -277,7 +277,8 @@ class TrainingOrchestrator:
                     json.dump(metrics, f, indent=2)
                 
                 print(f"✓ Metrics saved to: {metrics_file}")
-                 
+                
+                # Create summary report
                 report = f"""
     TRAINING SUMMARY
     ================

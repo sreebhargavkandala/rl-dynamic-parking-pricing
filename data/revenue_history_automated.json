@@ -1,0 +1,128 @@
+{
+  "2025-12-26": {
+    "revenue": 1837.82,
+    "cars": 144,
+    "avg_price": 11.03,
+    "occupancy": 36.9,
+    "weather": "Cloudy",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2025-12-27": {
+    "revenue": 1827.76,
+    "cars": 141,
+    "avg_price": 11.41,
+    "occupancy": 37.5,
+    "weather": "Foggy",
+    "is_weekend": true,
+    "is_holiday": false
+  },
+  "2025-12-28": {
+    "revenue": 2476.23,
+    "cars": 160,
+    "avg_price": 13.42,
+    "occupancy": 41.7,
+    "weather": "Sunny",
+    "is_weekend": true,
+    "is_holiday": false
+  },
+  "2025-12-29": {
+    "revenue": 2254.2,
+    "cars": 157,
+    "avg_price": 12.15,
+    "occupancy": 38.9,
+    "weather": "Sunny",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2025-12-30": {
+    "revenue": 644.89,
+    "cars": 93,
+    "avg_price": 6.28,
+    "occupancy": 27.2,
+    "weather": "Snowy",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2025-12-31": {
+    "revenue": 2254.2,
+    "cars": 157,
+    "avg_price": 12.15,
+    "occupancy": 38.9,
+    "weather": "Sunny",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2026-01-01": {
+    "revenue": 614.99,
+    "cars": 128,
+    "avg_price": 4.51,
+    "occupancy": 22.1,
+    "weather": "Cloudy",
+    "is_weekend": false,
+    "is_holiday": true
+  },
+  "2026-01-02": {
+    "revenue": 1574.14,
+    "cars": 139,
+    "avg_price": 9.91,
+    "occupancy": 35.0,
+    "weather": "Foggy",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2026-01-03": {
+    "revenue": 2476.23,
+    "cars": 160,
+    "avg_price": 13.42,
+    "occupancy": 41.7,
+    "weather": "Sunny",
+    "is_weekend": true,
+    "is_holiday": false
+  },
+  "2026-01-04": {
+    "revenue": 1479.79,
+    "cars": 130,
+    "avg_price": 10.22,
+    "occupancy": 35.4,
+    "weather": "Rainy",
+    "is_weekend": true,
+    "is_holiday": false
+  },
+  "2026-01-05": {
+    "revenue": 1544.98,
+    "cars": 135,
+    "avg_price": 9.91,
+    "occupancy": 35.0,
+    "weather": "Foggy",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2026-01-06": {
+    "revenue": 2254.2,
+    "cars": 157,
+    "avg_price": 12.15,
+    "occupancy": 38.9,
+    "weather": "Sunny",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2026-01-07": {
+    "revenue": 612.24,
+    "cars": 89,
+    "avg_price": 6.28,
+    "occupancy": 27.2,
+    "weather": "Snowy",
+    "is_weekend": false,
+    "is_holiday": false
+  },
+  "2026-01-08": {
+    "revenue": 658.21,
+    "cars": 94,
+    "avg_price": 6.28,
+    "occupancy": 27.2,
+    "weather": "Snowy",
+    "is_weekend": false,
+    "is_holiday": false
+  }
+}

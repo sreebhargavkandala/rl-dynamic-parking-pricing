@@ -120,9 +120,7 @@ class ParkingPricingEnv(gym.Env):
         self.price_range = self.max_price - self.min_price
         
         
-        self.revenue_weight = 1.0
-        self.occupancy_penalty_weight = 0.5
-        self.volatility_penalty_weight = 0.1
+        self.volatility_penalty_weight = 0.05  # Soft penalty on price changes
         
        
         self.action_space = spaces.Box(
@@ -329,28 +327,42 @@ class ParkingPricingEnv(gym.Env):
     
     def _compute_reward(self, revenue: float, price: float) -> float:
         """
-        REWARD FUNCTION (PRODUCTION-READY):
+        REWARD FUNCTION (REVENUE-OPTIMIZED WITH OCCUPANCY THRESHOLD):
         
-        r(s, a) = λ_rev * R_revenue - λ_occ * R_occupancy - λ_vol * R_volatility
+        r(s, a) = R_revenue + R_price_bonus - λ_occ * R_occupancy - λ_vol * R_volatility
         
         Components:
         -----------
-        1. REVENUE REWARD:
-           R_revenue = occupancy × capacity × price / capacity = occupancy × price
-           Encourages maximizing revenue
+        1. BASE REVENUE REWARD:
+           R_revenue = occupancy × price (empirical revenue per timestep)
+           Encourages both high prices AND high occupancy
         
-        2. OCCUPANCY PENALTY:
-           R_occupancy = (target_occupancy - occupancy)²
-           Penalizes deviation from 80% occupancy target
+        2. PRICE BONUS (NEW):
+           If occupancy > 0.75 (high demand):
+               Bonus = price × (occupancy - 0.75) × 10
+           Else: Bonus = 0
            
-        3. VOLATILITY PENALTY:
-           R_volatility = |price_t - price_t-1|
-           Penalizes rapid price changes (stability)
+           This incentivizes RAISING PRICES when lot is busy!
+           
+        3. OCCUPANCY THRESHOLD:
+           If occupancy < 0.6: penalty = 5.0 (force filling when low occupancy)
+           Else: penalty = very light (don't over-constrain when full)
+           
+        4. VOLATILITY PENALTY (SOFT):
+           R_volatility = |price_t - price_t-1| × 0.01
+           Minimal penalty for smooth but responsive pricing
         
-        Weights (tuned for production):
-        - λ_rev = 1.0 (normalize revenue by capacity)
-        - λ_occ = 0.5 (moderate occupancy constraint)
-        - λ_vol = 0.1 (light penalty for volatility)
+        Key Improvements for Revenue:
+        ---
+        ✓ Bonus for HIGH prices when occupancy HIGH
+        ✓ Strong penalty for EMPTY lot (occupancy < 60%)
+        ✓ Minimal penalty for FULL lot (allows high prices)
+        ✓ Direct revenue × price maximization
+        
+        This enables agent to:
+        ✓ Learn to RAISE prices when demand is high
+        ✓ FILL lot when empty (low prices)
+        ✓ MAXIMIZE revenue (high price × high occupancy)
         
         Args:
             revenue: Total revenue from this step
@@ -360,22 +372,29 @@ class ParkingPricingEnv(gym.Env):
             Scalar reward value
         """
        
-        revenue_reward = self.occupancy * price  
+        # 1. Base revenue reward
+        revenue_reward = self.occupancy * price
         
-       
-        occupancy_error = self.target_occupancy - self.occupancy
-        occupancy_penalty = self.occupancy_penalty_weight * (occupancy_error ** 2)
+        # 2. PRICE BONUS: reward high prices when occupancy is high (>75%)
+        price_bonus = 0.0
+        if self.occupancy > 0.75:
+            # Extra reward for raising prices in high-demand situations
+            price_bonus = price * (self.occupancy - 0.75) * 10.0
         
-       
+        # 3. OCCUPANCY CONSTRAINT: Strong penalty if too empty, soft if full
+        if self.occupancy < 0.6:
+            # Low occupancy = underutilized lot = big penalty
+            occupancy_penalty = 5.0 * ((0.6 - self.occupancy) ** 2)
+        else:
+            # High occupancy = good, very light penalty
+            occupancy_penalty = 0.05 * ((self.target_occupancy - self.occupancy) ** 2)
+        
+        # 4. Minimal volatility penalty for smooth pricing
         price_change = abs(price - self.price_history[1])
-        volatility_penalty = self.volatility_penalty_weight * price_change
+        volatility_penalty = 0.01 * price_change
         
-    
-        total_reward = (
-            self.revenue_weight * revenue_reward
-            - occupancy_penalty
-            - volatility_penalty
-        )
+        # Total reward: encourage revenue, penalize empty lot, allow exploration
+        total_reward = revenue_reward + price_bonus - occupancy_penalty - volatility_penalty
         
         return float(total_reward)
     
