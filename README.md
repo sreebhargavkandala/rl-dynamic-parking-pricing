@@ -242,7 +242,7 @@ Episode 85+:    $8,000 ± $1,500     (Stable convergence)
 
 ### **Option 1: Evaluate Trained Agent** (1 minute)
 ```bash
-cd c:\Users\harsh\Downloads\RL_Project\rl-dynamic-parking-pricing
+cd c:\Users\Downloads\RL_Project\rl-dynamic-parking-pricing
 python use_trained_agent.py --action eval --episodes 3
 ```
 Shows: Agent achieving $900-1000+ per episode
