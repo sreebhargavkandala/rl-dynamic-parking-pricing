@@ -1,4 +1,4 @@
-# 🚗 Deep Reinforcement Learning for Dynamic Parking Pricing
+# Deep Reinforcement Learning for Dynamic Parking Pricing
 
 > A complete, from-scratch implementation of an **A2C (Actor-Critic) Agent** for optimizing parking lot pricing in real-time. Trained model achieved **$12,805.85 reward** - **3x better than target!**
 
