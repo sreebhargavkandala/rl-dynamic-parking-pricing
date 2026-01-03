@@ -257,7 +257,7 @@ Shows: Agent's decision-making logic with occupancy/demand/price
 ```bash
 python dashboard/main_dashboard.py
 ```
-Shows: **Real-time visualization** of agent in action (BEST DEMO!) 🎨
+Shows: **Real-time visualization** of agent in action
 
 ### **Option 4: Check Training Metrics** (1 minute)
 ```bash
