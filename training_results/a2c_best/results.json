@@ -1,0 +1,14 @@
+{
+  "total_episodes": 184,
+  "best_reward": 12805.850587902729,
+  "avg_reward_last_100": 8046.199668600237,
+  "final_reward": 7476.2778565030285,
+  "training_time": "2026-01-03T00:24:50.472771",
+  "config": {
+    "policy_lr": 0.0003,
+    "value_lr": 0.001,
+    "gamma": 0.99,
+    "entropy_coef": 0.01,
+    "device": "cpu"
+  }
+}

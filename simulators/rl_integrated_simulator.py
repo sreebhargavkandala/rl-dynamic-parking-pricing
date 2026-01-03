@@ -15,6 +15,18 @@ import math
 import numpy as np
 from datetime import datetime, timedelta
 from collections import defaultdict, deque, deque
+import sys
+from pathlib import Path
+
+# Add role_2 to path for A2C import
+sys.path.insert(0, str(Path(__file__).parent.parent / 'role_2'))
+
+try:
+    from a2c_new import A2CAgent, A2CConfig
+    A2C_AVAILABLE = True
+except ImportError:
+    A2C_AVAILABLE = False
+    print("⚠️ A2C agent not available, using fallback Q-Learning")
 
 pygame.init()
 
@@ -43,7 +55,180 @@ COLORS = {
 }
 
 # ============================================================================
-# RL-BASED PRICING MODEL
+# A2C PRICING MODEL (NEW - INTEGRATED AGENT)
+# ============================================================================
+
+class A2CPricingModel:
+    """
+    A2C (Actor-Critic) Agent for Dynamic Pricing
+    Integrates A2C agent from role_2 for advanced learning
+    """
+    
+    def __init__(self):
+        self.base_price = 5.0
+        self.max_price = 30.0
+        self.min_price = 1.5
+        
+        # Initialize A2C agent
+        if A2C_AVAILABLE:
+            state_dim = 3  # [occupancy, hour, weather]
+            action_dim = 5  # 5 price levels
+            self.config = A2CConfig(state_dim=state_dim, action_dim=action_dim)
+            self.agent = A2CAgent(self.config)
+            self.use_a2c = True
+        else:
+            self.use_a2c = False
+        
+        # Fallback Q-Table for when A2C not available
+        self.q_table = defaultdict(lambda: {})
+        self.learning_rate = 0.1
+        self.gamma = 0.95
+        self.epsilon = 0.2
+        
+        # Training tracking
+        self.days_trained = 0
+        self.total_reward = 0
+        self.episode_rewards = []
+        self.price_history = []
+        self.reward_history = []
+    
+    def _discretize_state(self, occupancy, hour, weather):
+        """Convert continuous state to discrete for fallback Q-Learning"""
+        occ_level = min(4, int(occupancy * 5))
+        hour_period = 0 if hour < 12 else (1 if hour < 18 else 2)
+        return (occ_level, hour_period, weather)
+    
+    def _get_price_actions(self, occupancy, hour, weather):
+        """Generate possible price actions"""
+        time_demand = {
+            6: 0.2, 7: 0.4, 8: 0.9, 9: 1.0, 10: 0.95,
+            11: 0.8, 12: 0.85, 13: 0.9, 14: 0.85, 15: 0.7,
+            16: 0.75, 17: 1.0, 18: 0.9, 19: 0.7, 20: 0.5, 21: 0.3
+        }
+        weather_demand = {
+            "Sunny": 1.2, "Cloudy": 0.95, "Rainy": 0.7,
+            "Snowy": 0.5, "Foggy": 0.85
+        }
+        
+        base_boost = occupancy ** 2 * (self.max_price - self.base_price)
+        hour_demand = time_demand.get(hour, 0.5)
+        weather_mult = weather_demand.get(weather, 1.0)
+        base_calc = self.base_price + base_boost * hour_demand * weather_mult
+        
+        actions = [
+            max(self.min_price, base_calc * 0.7),
+            max(self.min_price, base_calc * 0.85),
+            max(self.min_price, base_calc * 1.0),
+            max(self.min_price, base_calc * 1.2),
+            min(self.max_price, base_calc * 1.4),
+        ]
+        return [round(p, 2) for p in actions]
+    
+    def get_optimal_price(self, occupancy, hour, weather, is_weekend, day_num, training=True):
+        """Select optimal price using A2C or Q-Learning"""
+        
+        if self.use_a2c:
+            # Use A2C agent
+            # Normalize state to [0, 1]
+            state_features = np.array([
+                occupancy,  # [0, 1]
+                hour / 24.0,  # [0, 1]
+                {"Sunny": 0, "Cloudy": 0.25, "Rainy": 0.5, "Snowy": 0.75, "Foggy": 1.0}.get(weather, 0.5)
+            ], dtype=np.float32)
+            
+            # Get action from A2C (continuous action)
+            action = self.agent.select_action(state_features)
+            
+            # Map continuous action to price (action is in [0, 1])
+            action_idx = int(action * 4.9) if isinstance(action, (float, np.ndarray)) else action
+            action_idx = max(0, min(4, action_idx))
+            
+            # Get price candidates
+            prices = self._get_price_actions(occupancy, hour, weather)
+            price = prices[action_idx]
+        else:
+            # Fallback to Q-Learning
+            state = self._discretize_state(occupancy, hour, weather)
+            prices = self._get_price_actions(occupancy, hour, weather)
+            
+            if training and random.random() < self.epsilon:
+                price = random.choice(prices)
+            else:
+                best_price = prices[2]  # Default to middle price
+                best_q = -float('inf')
+                for p in prices:
+                    if state not in self.q_table:
+                        self.q_table[state] = {}
+                    q_val = self.q_table[state].get(p, 0.5)
+                    if q_val > best_q:
+                        best_q = q_val
+                        best_price = p
+                price = best_price
+            
+            self.epsilon = max(0.05, self.epsilon * 0.98)
+        
+        self.price_history.append(price)
+        return price
+    
+    def train_on_day_reward(self, day_states, day_rewards):
+        """Train A2C agent with day's rewards"""
+        total_day_reward = sum(day_rewards)
+        self.episode_rewards.append(total_day_reward)
+        self.total_reward = total_day_reward
+        
+        if self.use_a2c:
+            # Train A2C agent
+            # Convert states to features
+            state_features = []
+            for state_info in day_states:
+                if isinstance(state_info, tuple) and len(state_info) == 3:
+                    occ, hour, weather = state_info
+                else:
+                    # If it's not in expected format, skip
+                    continue
+                
+                features = np.array([
+                    occ, hour / 24.0,
+                    {"Sunny": 0, "Cloudy": 0.25, "Rainy": 0.5, "Snowy": 0.75, "Foggy": 1.0}.get(weather, 0.5)
+                ], dtype=np.float32)
+                state_features.append(features)
+            
+            # Train on episode
+            if state_features:
+                try:
+                    self.agent.train_episode(
+                        states=state_features,
+                        actions=np.array(list(range(len(day_rewards)))) % 5,
+                        rewards=np.array(day_rewards, dtype=np.float32)
+                    )
+                except Exception as e:
+                    print(f"A2C training error: {e}")
+        else:
+            # Fallback Q-Learning training
+            for i, state_info in enumerate(day_states[:-1]):
+                if isinstance(state_info, tuple) and len(state_info) == 3:
+                    state = state_info
+                    reward = day_rewards[i] if i < len(day_rewards) else 0
+                    next_state = day_states[i + 1] if i + 1 < len(day_states) else state
+                    
+                    if state not in self.q_table:
+                        self.q_table[state] = {}
+                    
+                    # Simple Q-Learning update
+                    prices = self._get_price_actions(0.5, 12, "Sunny")
+                    price = prices[i % len(prices)]
+                    
+                    current_q = self.q_table[state].get(price, 0.5)
+                    max_next_q = max(self.q_table[next_state].values()) if next_state in self.q_table else 0.5
+                    new_q = current_q + self.learning_rate * (reward + self.gamma * max_next_q - current_q)
+                    self.q_table[state][price] = new_q
+        
+        self.days_trained += 1
+        self.learning_rate = max(0.01, self.learning_rate * 0.99)
+
+
+# ============================================================================
+# RL-BASED PRICING MODEL (FALLBACK)
 # ============================================================================
 
 class RLPricingModel:
@@ -369,8 +554,15 @@ class RLCityParkingSimulator:
         self.running = True
         self.paused = False
         
-        # Initialize RL model
-        self.rl_model = RLPricingModel()
+        # Initialize RL model (use A2C if available, fallback to Q-Learning)
+        if A2C_AVAILABLE:
+            self.rl_model = A2CPricingModel()
+            self.using_a2c = True
+            print("✅ Using A2C Agent for pricing")
+        else:
+            self.rl_model = RLPricingModel()
+            self.using_a2c = False
+            print("📚 Using Q-Learning Model (A2C not available)")
         
         # Components (50-space lot for realistic city parking)
         self.parking_lot = ParkingLot(num_spaces=50)
