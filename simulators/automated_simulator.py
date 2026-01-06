@@ -1,15 +1,4 @@
-"""
-Automated Parking Lot Simulator - Multi-Week Run
-================================================
-
-Automatically run the parking lot simulator for multiple weeks with:
-- Weather effects
-- Weekend variations
-- Holiday impacts
-- Dynamic pricing adjustments
-- Real-time daily revenue tracking
-- Weekly and overall summaries
-"""
+ 
 
 import json
 import numpy as np
@@ -474,9 +463,9 @@ def main():
             if 1 <= weeks <= 12:
                 break
             else:
-                print("❌ Please enter a number between 1 and 12")
+                print(" Please enter a number between 1 and 12")
         except ValueError:
-            print("❌ Please enter a valid number")
+            print(" Please enter a valid number")
     
     print()
     
@@ -490,7 +479,7 @@ def main():
     simulator.display_daily_report()
     simulator.display_summary()
     
-    print("\n✨ Simulation complete! Check the detailed report above. ✨\n")
+    print("\n Simulation complete! Check the detailed report above. \n")
 
 
 if __name__ == "__main__":
