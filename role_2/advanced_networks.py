@@ -1,14 +1,4 @@
-"""
-Advanced Neural Network Architectures for RL
-
-State-of-the-art network designs with:
-- Dueling architecture for value/advantage separation
-- Batch normalization for training stability
-- Advanced activation functions (Mish, SwiGLU)
-- Orthogonal initialization for better convergence
-- Residual connections for deeper networks
-- Proper weight initialization strategies
-"""
+ 
 
 import torch
 import torch.nn as nn
