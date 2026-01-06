@@ -1,14 +1,4 @@
-"""
-Automated Multi-Week Parking Lot Simulator Game
-===============================================
-Actual interactive game that runs for multiple weeks!
-- Real cars parking/leaving
-- Dynamic pricing updating
-- Weather and weekend effects
-- Revenue accumulating
-- Week-by-week progression
-- All with actual game mechanics and animations
-"""
+ 
 
 import pygame
 import json
@@ -509,9 +499,9 @@ def main():
             weeks = int(input("How many weeks to simulate? (1-12): ").strip())
             if 1 <= weeks <= 12:
                 break
-            print("❌ Please enter 1-12")
+            print(" Please enter 1-12")
         except:
-            print("❌ Invalid input")
+            print(" Invalid input")
     
     game = MultiWeekSimulator(total_weeks=weeks)
     game.run()
