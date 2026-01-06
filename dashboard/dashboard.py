@@ -1,6 +1,6 @@
 """
 COMPREHENSIVE PROJECT DASHBOARD
-================================
+ 
 Real-time monitoring and visualization of:
 - Parking lot pricing dynamics
 - Revenue trends
@@ -22,10 +22,7 @@ from matplotlib.figure import Figure
 
 pygame.init()
 
-# ============================================================================
-# CONSTANTS
-# ============================================================================
-
+ 
 WIDTH, HEIGHT = 1600, 1200
 FPS = 30
 
@@ -42,10 +39,7 @@ COLORS = {
     'rl_accent': (147, 51, 234),
 }
 
-# ============================================================================
-# DATA TRACKER
-# ============================================================================
-
+ 
 class MetricsTracker:
     """Track all project metrics in real-time"""
     
@@ -135,10 +129,7 @@ class MetricsTracker:
         return data[-1] - data[0]
 
 
-# ============================================================================
-# CHART GENERATOR
-# ============================================================================
-
+ 
 class ChartGenerator:
     """Generate matplotlib charts"""
     
@@ -232,10 +223,7 @@ class ChartGenerator:
         return pygame.image.fromstring(raw_data, size, "RGB")
 
 
-# ============================================================================
-# DASHBOARD
-# ============================================================================
-
+ 
 class Dashboard:
     """Real-time project dashboard"""
     
@@ -490,12 +478,12 @@ class Dashboard:
         stats = self.tracker.get_statistics()
         
         summary_lines = [
-            f"✅ Simulation Days: {stats['days_simulated']}",
-            f"✅ Total Cars Parked: {stats['total_cars']}",
-            f"✅ Total Revenue: ${stats['total_revenue']:,.2f}",
-            f"✅ Avg Daily Revenue: ${stats['avg_daily_revenue']:,.2f}",
-            f"✅ Avg Price Point: ${stats['avg_price']:.2f}",
-            f"✅ Avg Occupancy: {stats['avg_occupancy']*100:.1f}%",
+            f" Simulation Days: {stats['days_simulated']}",
+            f" Total Cars Parked: {stats['total_cars']}",
+            f" Total Revenue: ${stats['total_revenue']:,.2f}",
+            f" Avg Daily Revenue: ${stats['avg_daily_revenue']:,.2f}",
+            f" Avg Price Point: ${stats['avg_price']:.2f}",
+            f" Avg Occupancy: {stats['avg_occupancy']*100:.1f}%",
         ]
         
         for i, line in enumerate(summary_lines):
@@ -511,7 +499,7 @@ class Dashboard:
     def run(self):
         """Main loop"""
         print("\n" + "="*80)
-        print("🅿️ PARKING LOT PROJECT - REAL-TIME DASHBOARD")
+        print(" PARKING LOT PROJECT - REAL-TIME DASHBOARD")
         print("="*80)
         print("\nDashboard Features:")
         print("  ✓ Real-time price and occupancy tracking")
