@@ -25,7 +25,7 @@ class TrainingMonitor:
         metrics_file = self.results_dir / "training_metrics.json"
         
         if not metrics_file.exists():
-            print("⏳ Training not started yet or results directory not found")
+            print(" Training not started yet or results directory not found")
             print(f"   Looking in: {self.results_dir}")
             return None
         
