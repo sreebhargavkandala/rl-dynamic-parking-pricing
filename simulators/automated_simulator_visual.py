@@ -1,15 +1,4 @@
-"""
-Automated Parking Lot Simulator - Visual Multi-Week Run with GUI
-=================================================================
-
-Shows complete week-by-week simulation with:
-- Visual parking lot representation
-- Real-time daily updates
-- Weather effects display
-- Dynamic pricing visualization
-- Weekly and overall revenue tracking
-- All in an interactive pygame window
-"""
+ 
 
 import pygame
 import numpy as np
