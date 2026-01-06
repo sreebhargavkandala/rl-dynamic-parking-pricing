@@ -1,12 +1,4 @@
-"""
-Role 4: Video Recording Module for Parking Pricing
-===================================================
-
-Generates animated visualizations of agent behavior over episodes.
-Creates before/after comparisons of baseline vs trained RL agent.
-
-Author: Role 4 - Evaluation, Baselines & Presentation
-"""
+ 
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,10 +12,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 
-# =============================================================================
-# EPISODE DATA COLLECTION
-# =============================================================================
-
+ 
 def collect_episode_data(
     env,
     strategy_or_agent,
@@ -79,10 +68,7 @@ def collect_episode_data(
     return prices, occupancies[:-1], revenues  # Align lengths
 
 
-# =============================================================================
-# ANIMATED EPISODE VISUALIZATION
-# =============================================================================
-
+ 
 def create_episode_animation(
     prices: List[float],
     occupancies: List[float],
@@ -188,10 +174,7 @@ def create_episode_animation(
     return anim
 
 
-# =============================================================================
-# COMPARISON ANIMATION
-# =============================================================================
-
+ 
 def create_comparison_animation(
     baseline_data: Tuple[List[float], List[float]],
     rl_data: Tuple[List[float], List[float]],
@@ -311,10 +294,7 @@ def create_comparison_animation(
     return anim
 
 
-# =============================================================================
-# STATIC COMPARISON IMAGE
-# =============================================================================
-
+ 
 def create_comparison_static(
     baseline_data: Tuple[List[float], List[float]],
     rl_data: Tuple[List[float], List[float]],
@@ -383,10 +363,7 @@ def create_comparison_static(
     return fig
 
 
-# =============================================================================
-# MAIN
-# =============================================================================
-
+ 
 if __name__ == "__main__":
     print("Video Recording Module")
     print("=" * 50)
