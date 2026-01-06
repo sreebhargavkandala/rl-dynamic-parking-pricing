@@ -1,16 +1,4 @@
-"""
-Interactive Parking Lot Simulator Game
-======================================
-A real-time, interactive parking lot management simulator with dynamic pricing.
-Users can spawn cars, apply ML-based dynamic pricing, and track revenue metrics.
-
-Features:
-- Click-to-enter cars at parking gate
-- Real-time dynamic pricing using trained RL agent
-- Hover details showing car info and assigned price
-- Revenue tracking with day-by-day comparison
-- Visual parking lot display with real-time updates
-"""
+ 
 
 import pygame
 import json
