@@ -1,6 +1,6 @@
 """
-ROLE 3: Demand Modeling Module
-================================
+ Demand Modeling Module
+ 
 
 Implements demand forecasting for dynamic parking pricing.
 Provides models to predict occupancy based on:
@@ -243,10 +243,7 @@ class DemandModelFactory:
             raise ValueError(f"Unknown model type: {config.model_type}")
 
 
-# ============================================================================
-# SYNTHETIC DATA GENERATION (for training/testing)
-# ============================================================================
-
+ 
 def generate_synthetic_demand_data(
     n_samples: int = 1000,
     price_range: Tuple[float, float] = (0.5, 20.0),
@@ -308,10 +305,7 @@ def generate_synthetic_demand_data(
     return X, occupancy_true
 
 
-# ============================================================================
-# EVALUATION METRICS
-# ============================================================================
-
+ 
 def evaluate_demand_model(
     model: BaseDemandModel,
     X_test: np.ndarray,
@@ -352,10 +346,7 @@ def evaluate_demand_model(
     }
 
 
-# ============================================================================
-# MAIN: Demo usage
-# ============================================================================
-
+ 
 if __name__ == "__main__":
     print("=" * 80)
     print("ROLE 3: DEMAND MODELING MODULE")
