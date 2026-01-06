@@ -1,6 +1,4 @@
 """
-ENHANCED PARKING PRICING ENVIRONMENT
-====================================
 
 Improved environment with:
 - Curriculum learning
