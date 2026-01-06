@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""
-═══════════════════════════════════════════════════════════════════════════════
-    LAUNCH TRAINED A2C AGENT - QUICK START
-═══════════════════════════════════════════════════════════════════════════════
-
-Easy interface to load and use your best-trained A2C agent for parking pricing.
-"""
+ 
 
 import sys
 from pathlib import Path
