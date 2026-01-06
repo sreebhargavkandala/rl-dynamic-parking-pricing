@@ -244,24 +244,24 @@ def create_analysis_summary(prices, occupancies, rewards):
     print("\n" + "="*80)
     print("ADVANCED ANALYTICS REPORT")
     print("="*80)
-    print(f"\n📊 STATISTICS:")
+    print(f"\n STATISTICS:")
     print(f"  Average Price: ${report['statistics']['avg_price']:.2f}")
     print(f"  Price Range: ${report['statistics']['min_price']:.2f} - ${report['statistics']['max_price']:.2f}")
     print(f"  Price Volatility: {report['statistics']['price_std']:.2f}")
     print(f"  Average Occupancy: {report['statistics']['avg_occupancy']*100:.1f}%")
     print(f"  Occupancy Std: {report['statistics']['occupancy_std']*100:.1f}%")
     
-    print(f"\n🎯 PERFORMANCE METRICS:")
+    print(f"\n PERFORMANCE METRICS:")
     print(f"  Price Elasticity: {report['price_elasticity']:.3f}")
     print(f"  Revenue Efficiency: {report['revenue_efficiency']:.3f}")
     print(f"  Stability Score: {report['stability_score']:.1f}/100")
     
-    print(f"\n⚠️ ANOMALIES DETECTED: {len(report['anomalies'])}")
+    print(f"\n ANOMALIES DETECTED: {len(report['anomalies'])}")
     for anomaly in report['anomalies'][:5]:
         print(f"  - At step {anomaly['index']}: ${anomaly['price']:.2f} "
               f"({anomaly['deviation']:.2f}σ deviation)")
     
-    print(f"\n📈 PEAK HOURS: {len(report['peak_hours'])}")
+    print(f"\n PEAK HOURS: {len(report['peak_hours'])}")
     for peak in report['peak_hours'][:5]:
         print(f"  - Hour {peak['hour']}: {peak['occupancy']*100:.1f}%")
     
