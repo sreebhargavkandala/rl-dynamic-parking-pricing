@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
-"""
-Role 4: Main Evaluation Script
-==============================
 
-Runs complete evaluation pipeline:
-1. Load trained RL agent
-2. Run all baseline strategies
-3. Compare performance
-4. Generate plots and tables
-5. Create comparison visualizations
-
-Author: Role 4 - Evaluation, Baselines & Presentation
-"""
 
 import sys
 import json
@@ -129,9 +117,7 @@ def run_evaluation(
         output_dir = Path(__file__).parent / "results"
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    # ==========================================================================
-    # STEP 1: CREATE ENVIRONMENT
-    # ==========================================================================
+  
     print("\n[1/6] Setting up environment...")
     
     env = ParkingPricingEnv(
@@ -144,18 +130,14 @@ def run_evaluation(
     )
     print(f"  ✓ Environment: {env.capacity} spots, ${env.min_price}-${env.max_price} range")
     
-    # ==========================================================================
-    # STEP 2: LOAD TRAINED AGENT
-    # ==========================================================================
+     
     print("\n[2/6] Loading trained agent...")
     
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     agent = load_trained_agent(device=device)
     print(f"  ✓ Agent device: {device}")
     
-    # ==========================================================================
-    # STEP 3: GET BASELINE STRATEGIES
-    # ==========================================================================
+    
     print("\n[3/6] Preparing baseline strategies...")
     
     baselines = get_default_baselines()
@@ -163,9 +145,7 @@ def run_evaluation(
     for b in baselines:
         print(f"      - {b.name}")
     
-    # ==========================================================================
-    # STEP 4: RUN COMPARISON
-    # ==========================================================================
+     
     print("\n[4/6] Running strategy evaluation...")
     
     results = compare_strategies(
@@ -184,9 +164,7 @@ def run_evaluation(
     # Save results
     save_results(results, output_dir)
     
-    # ==========================================================================
-    # STEP 5: GENERATE PLOTS
-    # ==========================================================================
+    
     print("\n[5/6] Generating visualizations...")
     
     # Training progress (if available)
@@ -199,7 +177,7 @@ def run_evaluation(
             show=show_plots
         )
     else:
-        print("  ⚠ Training metrics not found, skipping training progress plot")
+        print("   Training metrics not found, skipping training progress plot")
     
     # Revenue comparison
     print("  → Revenue comparison plot...")
@@ -234,9 +212,7 @@ def run_evaluation(
         show=show_plots
     )
     
-    # ==========================================================================
-    # STEP 6: EPISODE COMPARISON
-    # ==========================================================================
+    
     print("\n[6/6] Generating episode comparison...")
     
     # Collect data for one episode from each strategy
@@ -297,9 +273,7 @@ def run_evaluation(
     except Exception as e:
         print(f"  ⚠ Could not generate GIFs: {e}")
     
-    # ==========================================================================
-    # SUMMARY
-    # ==========================================================================
+    
     print("\n" + "="*80)
     print("  EVALUATION COMPLETE!")
     print("="*80)
@@ -310,7 +284,7 @@ def run_evaluation(
     
     # Find best performer
     best = max(results.items(), key=lambda x: x[1].avg_revenue if hasattr(x[1], 'avg_revenue') else x[1]['avg_revenue'])
-    print(f"\n🏆 Best performing strategy: {best[0]}")
+    print(f"\n Best performing strategy: {best[0]}")
     if hasattr(best[1], 'avg_revenue'):
         print(f"   Average Revenue: ${best[1].avg_revenue:,.2f}")
     else:
@@ -319,9 +293,7 @@ def run_evaluation(
     print("\n" + "="*80 + "\n")
 
 
-# =============================================================================
-# MAIN
-# =============================================================================
+ 
 
 if __name__ == "__main__":
     import argparse
