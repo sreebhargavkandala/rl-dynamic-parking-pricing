@@ -1,30 +1,4 @@
-"""
-SAC (Soft Actor-Critic) - State-of-the-Art Maximum Entropy RL
-
-Implementation of Soft Actor-Critic algorithm for continuous control with:
-- Maximum entropy RL framework for automatic exploration-exploitation tradeoff
-- Dual critic networks for stability (clipped double Q-learning)
-- Automatic temperature adjustment for entropy coefficient
-- Off-policy learning with experience replay
-- Superior sample efficiency and robustness
-
-Paper: "Soft Actor-Critic: Off-Policy Deep Reinforcement Learning with a Stochastic Actor"
-(Haarnoja et al., 2018) https://arxiv.org/abs/1801.01290
-
-Key Innovations:
-1. Maximum entropy framework: maximize E[π(·|s)] + αH(π(·|s))
-2. Stochastic actor π(a|s) for better exploration
-3. Dual critics for reduced overestimation
-4. Automatic temperature tuning for entropy coefficient α
-5. Off-policy learning with Gaussian policy
-
-Why SAC is State-of-the-Art:
-- Best sample efficiency among all continuous RL algorithms
-- Robust to hyperparameters
-- Automatic exploration through entropy maximization
-- Used in robotics and real-world applications
-- Superior to PPO, DDPG on most benchmarks
-"""
+ 
 
 import numpy as np
 import torch
@@ -75,12 +49,7 @@ class SACReplayBuffer:
 
 
 class SACPolicy(nn.Module):
-    """
-    Stochastic Policy Network for SAC.
-    
-    Maps state → (mean, log_std) for Gaussian policy.
-    Uses tanh squashing for bounded actions.
-    """
+ 
     
     def __init__(self, state_dim: int, action_dim: int, hidden_dim: int = 256):
         super().__init__()
@@ -182,29 +151,7 @@ class SACCritic(nn.Module):
 
 
 class SACAgent:
-    """
-    Soft Actor-Critic Agent.
     
-    State-of-the-art algorithm for continuous control.
-    
-    Components:
-    1. Policy π(a|s): Stochastic Gaussian policy
-    2. Two Q-networks: Q₁(s,a) and Q₂(s,a) (twin critics)
-    3. Target Q-networks: Q₁' and Q₂' (for stability)
-    4. Automatic entropy tuning: α_t (learns entropy coefficient)
-    5. Replay buffer: For off-policy learning
-    
-    Objective (Maximum Entropy RL):
-    J(π) = E[log π(a|s) - Q(s,a)]
-    
-    Where α is automatically tuned to maintain target entropy.
-    
-    Update Rules:
-    1. Actor: ∇J(π) = ∇[α log π(a|s) - Q(s,a)]
-    2. Critic: Minimize MSE(Q_target - Q), where
-       Q_target = r + γ min(Q₁'(s',a'), Q₂'(s',a')) - α log π(a'|s')
-    3. Temperature: Tune α to maximize entropy + exploration
-    """
     
     def __init__(
         self,
@@ -219,22 +166,7 @@ class SACAgent:
         device: str = "cpu",
         target_entropy: Optional[float] = None
     ):
-        """
-        Initialize SAC Agent.
-        
-        Args:
-            state_dim: State dimensionality
-            action_dim: Action dimensionality
-            max_action: Maximum action value
-            actor_lr: Policy learning rate
-            critic_lr: Critic learning rate
-            gamma: Discount factor
-            tau: Soft update coefficient
-            hidden_dim: Hidden layer size
-            device: PyTorch device
-            target_entropy: Target entropy for temperature tuning
-                           (default: -action_dim)
-        """
+         
         self.state_dim = state_dim
         self.action_dim = action_dim
         self.max_action = max_action
@@ -318,17 +250,7 @@ class SACAgent:
             )
     
     def update(self, batch_size: int = 64) -> Dict[str, float]:
-        """
-        Perform one update step.
         
-        Updates actor, critics, and temperature coefficient.
-        
-        Args:
-            batch_size: Mini-batch size
-        
-        Returns:
-            Dictionary with training metrics
-        """
         if len(self.replay_buffer) < batch_size:
             return {"status": "insufficient_data"}
         
