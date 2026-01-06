@@ -1,16 +1,4 @@
-"""
-═══════════════════════════════════════════════════════════════════════════════
-    A2C TRAINING SYSTEM - COMPLETE FROM SCRATCH
-═══════════════════════════════════════════════════════════════════════════════
-
-Complete training pipeline with:
-✓ Episode collection and management
-✓ Trajectory logging and analysis
-✓ Checkpointing and model persistence
-✓ Training monitoring and metrics
-✓ Early stopping and learning rate scheduling
-✓ Advanced diagnostic tools
-"""
+ 
 
 import numpy as np
 import torch
