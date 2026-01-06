@@ -1,12 +1,4 @@
-"""
-INTEGRATION LAYER: Role 1 (Environment) + Role 2 (RL Algorithm)
-
-Complete end-to-end integration providing:
-- Seamless environment-agent communication
-- Type-safe interfaces
-- Production-ready training pipeline
-- Comprehensive validation and error handling
-"""
+ 
 
 from typing import Tuple, Dict, Any, Optional, List
 import numpy as np
