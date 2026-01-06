@@ -1,6 +1,5 @@
 """
-ADVANCED A2C AGENT WITH DUELING NETWORKS
-=========================================
+ 
 
 Improved A2C implementation with:
 - Dueling architecture (separate value & advantage streams)
