@@ -1,14 +1,4 @@
-"""
-ADVANCED INTEGRATION PIPELINE
-==============================
-
-Master pipeline with:
-- Advanced A2C agent (dueling networks)
-- Enhanced environment (curriculum, domain randomization, advanced features)
-- Multi-objective optimization
-- Improved evaluation with robustness metrics
-- Adaptive learning strategies
-"""
+ 
 
 import argparse
 import logging
