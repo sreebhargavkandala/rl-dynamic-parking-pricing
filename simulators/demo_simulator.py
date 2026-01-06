@@ -1,14 +1,4 @@
-"""
-PROFESSIONAL PARKING LOT SIMULATOR DEMO
-========================================
-Complete interactive demo showing:
-- Real parking lot with cars arriving/leaving
-- Dynamic pricing algorithm breakdown
-- All pricing factors visualization
-- Real-time revenue tracking
-- Weather and time-based effects
-Perfect for faculty demonstration!
-"""
+ 
 
 import pygame
 import json
@@ -20,11 +10,7 @@ import sys
 import os
 
 pygame.init()
-
-# ============================================================================
-# CLASSES
-# ============================================================================
-
+ 
 class Car:
     """Represents a parked car"""
     def __init__(self, car_id, entry_time, duration_hours, assigned_price):
