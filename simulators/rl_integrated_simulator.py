@@ -1,13 +1,4 @@
-"""
-REALISTIC CITY PARKING LOT - RL MODEL INTEGRATED
-================================================
-Realistic city parking lot simulator with:
-- 60% minimum occupancy (like real city parking)
-- RL-based dynamic pricing model
-- Day-by-day progression with comparison
-- Real-world parking patterns
-Perfect for faculty demo!
-"""
+ 
 
 import pygame
 import random
@@ -30,10 +21,7 @@ except ImportError:
 
 pygame.init()
 
-# ============================================================================
-# CONSTANTS
-# ============================================================================
-
+ 
 WIDTH, HEIGHT = 1800, 1000
 FPS = 60
 
@@ -54,9 +42,7 @@ COLORS = {
     'rl_accent': (147, 51, 234),  # Purple for RL
 }
 
-# ============================================================================
-# A2C PRICING MODEL (NEW - INTEGRATED AGENT)
-# ============================================================================
+ 
 
 class A2CPricingModel:
     """
@@ -227,9 +213,7 @@ class A2CPricingModel:
         self.learning_rate = max(0.01, self.learning_rate * 0.99)
 
 
-# ============================================================================
-# RL-BASED PRICING MODEL (FALLBACK)
-# ============================================================================
+ 
 
 class RLPricingModel:
     """
@@ -386,10 +370,7 @@ class RLPricingModel:
         if self.days_trained > 1:
             self.learning_rate = max(0.01, self.learning_rate * 0.99)
 
-
-# ============================================================================
-# CAR CLASS
-# ============================================================================
+ 
 
 class Car:
     """Realistic car representation"""
@@ -422,9 +403,7 @@ class Car:
         pygame.draw.circle(surface, wheel_color, (int(self.x+32), int(self.y+self.height)), 3)
 
 
-# ============================================================================
-# PARKING SPACE
-# ============================================================================
+ 
 
 class ParkingSpace:
     """Individual parking space"""
@@ -514,10 +493,7 @@ class ParkingLot:
         return None
 
 
-# ============================================================================
-# BUTTON CLASS
-# ============================================================================
-
+ 
 class Button:
     def __init__(self, x, y, width, height, text):
         self.rect = pygame.Rect(x, y, width, height)
@@ -540,10 +516,7 @@ class Button:
         self.hovered = self.rect.collidepoint(pos)
 
 
-# ============================================================================
-# MAIN SIMULATOR
-# ============================================================================
-
+ 
 class RLCityParkingSimulator:
     """Main simulator with RL pricing and city parking patterns"""
     
