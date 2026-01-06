@@ -1,9 +1,4 @@
-"""
-VISUALIZATION & ANALYSIS DASHBOARD
-===================================
-
-Advanced visualization and analysis tools for comparing agents and understanding performance.
-"""
+ 
 
 import json
 import numpy as np
@@ -124,7 +119,7 @@ class VisualizationDashboard:
         file_path = self.output_dir / f"{agent_name.lower()}_dashboard.png"
         plt.savefig(file_path, dpi=self.style['dpi'], bbox_inches='tight')
         plt.close()
-        logger.info(f"✓ Metrics dashboard saved to {file_path}")
+        logger.info(f" Metrics dashboard saved to {file_path}")
     
     def plot_statistics_comparison(self, original_metrics: Dict, advanced_metrics: Dict):
         """
