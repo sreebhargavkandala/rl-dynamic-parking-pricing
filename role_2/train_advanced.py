@@ -151,7 +151,7 @@ class SimpleAdvancedPipeline:
         metrics_file = self.output_dir / "advanced_metrics.json"
         with open(metrics_file, 'w') as f:
             json.dump(self.training_history, f, indent=2)
-        logger.info(f"✓ Metrics saved to {metrics_file}")
+        logger.info(f" Metrics saved to {metrics_file}")
         
         # Summary
         summary = {
@@ -168,7 +168,7 @@ class SimpleAdvancedPipeline:
         summary_file = self.output_dir / "advanced_summary.json"
         with open(summary_file, 'w') as f:
             json.dump(summary, f, indent=2)
-        logger.info(f"✓ Summary saved to {summary_file}")
+        logger.info(f" Summary saved to {summary_file}")
 
 
 def main():
@@ -178,8 +178,8 @@ def main():
     
     args = parser.parse_args()
     
-    logger.info("\n" + "█"*80)
-    logger.info("█ ADVANCED RL DYNAMIC PARKING PRICING - TRAINING")
+    logger.info("\n" + ""*80)
+    logger.info(" ADVANCED RL DYNAMIC PARKING PRICING - TRAINING")
     logger.info("█"*80)
     logger.info(f"Start time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     logger.info("█"*80 + "\n")
