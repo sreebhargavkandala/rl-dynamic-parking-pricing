@@ -1,16 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Complete Training Script - Train RL Agent for Parking Pricing
-
-This script trains the A2C agent from scratch with:
-- Environment setup
-- Agent initialization
-- Complete training loop (500 episodes)
-- Performance tracking
-- Model checkpointing
-- Results visualization
-"""
+ 
 
 import numpy as np
 import torch
@@ -55,7 +45,7 @@ class TrainingOrchestrator:
         self.episode_losses = []
         self.best_reward = -np.inf
         
-        print(f"\n📁 Results directory: {self.results_dir.absolute()}")
+        print(f"\n Results directory: {self.results_dir.absolute()}")
         print(f"✓ Orchestrator initialized\n")
     
     def setup_environment(self) -> ParkingPricingEnv:
@@ -310,7 +300,7 @@ class TrainingOrchestrator:
         print("\n")
         print("╔" + "="*78 + "╗")
         print("║" + " "*78 + "║")
-        print("║" + "   🚀 COMPLETE RL TRAINING PIPELINE - PARKING PRICING 🚀".center(78) + "║")
+        print("║" + "    COMPLETE RL TRAINING PIPELINE - PARKING PRICING ".center(78) + "║")
         print("║" + " "*78 + "║")
         print("╚" + "="*78 + "╝")
         
