@@ -1,18 +1,4 @@
-"""
-Role 4: Evaluation Framework for Parking Pricing
-=================================================
-
-Implements baseline strategies and evaluation tools for comparing
-RL agents against traditional pricing approaches.
-
-Baselines:
-- Fixed Price: Constant hourly rate
-- Time-Based: Peak/off-peak pricing
-- Random: Random prices (worst-case baseline)
-- Demand-Based: Simple rule matching current occupancy
-
-Author: Role 4 - Evaluation, Baselines & Presentation
-"""
+ 
 
 import numpy as np
 import json
@@ -31,10 +17,7 @@ from role_1.env import ParkingPricingEnv
 from role_1.metrics import compute_all_metrics, ParkingMetrics
 
 
-# =============================================================================
-# BASELINE STRATEGY INTERFACE
-# =============================================================================
-
+ 
 class PricingStrategy(ABC):
     """Abstract base class for pricing strategies."""
     
@@ -63,10 +46,7 @@ class PricingStrategy(ABC):
         pass
 
 
-# =============================================================================
-# BASELINE IMPLEMENTATIONS
-# =============================================================================
-
+ 
 class FixedPriceStrategy(PricingStrategy):
     """
     Fixed Price Baseline
@@ -95,7 +75,7 @@ class FixedPriceStrategy(PricingStrategy):
 class TimeBasedStrategy(PricingStrategy):
     """
     Time-Based Pricing Baseline
-    ---------------------------
+     
     Higher prices during peak hours (8am-6pm), lower off-peak.
     Represents simple time-of-day pricing without demand sensing.
     
@@ -132,7 +112,7 @@ class TimeBasedStrategy(PricingStrategy):
 class RandomPriceStrategy(PricingStrategy):
     """
     Random Pricing Baseline
-    -----------------------
+  
     Uniformly random prices - worst case baseline.
     Useful for showing RL improvement over random policy.
     """
@@ -154,7 +134,7 @@ class RandomPriceStrategy(PricingStrategy):
 class DemandBasedStrategy(PricingStrategy):
     """
     Simple Demand-Based Pricing
-    ---------------------------
+     
     Rule-based pricing that increases price when occupancy is high.
     Represents simple reactive pricing without learning.
     
@@ -185,10 +165,7 @@ class DemandBasedStrategy(PricingStrategy):
         return np.clip(price, env.min_price, env.max_price)
 
 
-# =============================================================================
-# EVALUATION METRICS
-# =============================================================================
-
+ 
 @dataclass
 class EvaluationResult:
     """Results from evaluating a strategy over multiple episodes."""
@@ -245,10 +222,7 @@ class EvaluationResult:
         }
 
 
-# =============================================================================
-# EVALUATION RUNNER
-# =============================================================================
-
+ 
 def evaluate_strategy(
     env: ParkingPricingEnv,
     strategy: PricingStrategy,
@@ -404,10 +378,7 @@ def evaluate_rl_agent(
     return result
 
 
-# =============================================================================
-# COMPARISON & REPORTING
-# =============================================================================
-
+ 
 def compare_strategies(
     env: ParkingPricingEnv,
     strategies: List[PricingStrategy],
@@ -516,10 +487,7 @@ def save_results(
     print(f"\n✓ Results saved to {output_dir}")
 
 
-# =============================================================================
-# DEFAULT BASELINES
-# =============================================================================
-
+ 
 def get_default_baselines() -> List[PricingStrategy]:
     """Get standard set of baseline strategies."""
     return [
@@ -531,10 +499,7 @@ def get_default_baselines() -> List[PricingStrategy]:
     ]
 
 
-# =============================================================================
-# MAIN (for standalone testing)
-# =============================================================================
-
+ 
 if __name__ == "__main__":
     print("\n" + "="*70)
     print("  ROLE 4: EVALUATION FRAMEWORK - STANDALONE TEST")
