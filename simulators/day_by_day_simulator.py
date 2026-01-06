@@ -1,11 +1,4 @@
-"""
-REALISTIC PARKING LOT SIMULATOR - DAY BY DAY
-=============================================
-Run one complete day at a time (6 AM to 6 PM)
-Click NEXT DAY to progress to the next day
-Shows previous day revenue for comparison
-Perfect for step-by-step faculty demo!
-"""
+ 
 
 import pygame
 import random
@@ -16,10 +9,7 @@ import numpy as np
 
 pygame.init()
 
-# ============================================================================
-# CONSTANTS
-# ============================================================================
-
+ 
 WIDTH, HEIGHT = 1800, 1000
 FPS = 60
 
@@ -41,10 +31,7 @@ COLORS = {
     'button_text': (255, 255, 255),
 }
 
-# ============================================================================
-# CAR CLASS
-# ============================================================================
-
+ 
 class Car:
     """Realistic car representation"""
     def __init__(self, car_id, x, y, price, duration, entry_time):
@@ -111,10 +98,7 @@ class Car:
         return True
 
 
-# ============================================================================
-# PARKING SPACES
-# ============================================================================
-
+ 
 class ParkingSpace:
     """Individual parking space"""
     def __init__(self, x, y, space_id):
@@ -213,9 +197,7 @@ class ParkingLot:
         return None
 
 
-# ============================================================================
-# PRICING ENGINE
-# ============================================================================
+ 
 
 class DynamicPricingEngine:
     """Dynamic pricing with multiple factors"""
@@ -269,10 +251,7 @@ class DynamicPricingEngine:
         }
 
 
-# ============================================================================
-# BUTTON CLASS
-# ============================================================================
-
+ 
 class Button:
     """Clickable button"""
     def __init__(self, x, y, width, height, text):
@@ -296,10 +275,7 @@ class Button:
         self.hovered = self.rect.collidepoint(pos)
 
 
-# ============================================================================
-# MAIN SIMULATOR
-# ============================================================================
-
+ 
 class DayByDaySimulator:
     """Main simulator with day-by-day progression"""
     
