@@ -1,15 +1,4 @@
-"""
-REALISTIC 3D-STYLE PARKING LOT SIMULATOR
-=========================================
-Real-life parking lot with:
-- Proper parking spaces with markings
-- Realistic car representations
-- Entrance/exit gates
-- Clear animations
-- Real-time pricing display
-- Professional layout
-Perfect for faculty to understand the system!
-"""
+ 
 
 import pygame
 import random
@@ -20,10 +9,7 @@ import numpy as np
 
 pygame.init()
 
-# ============================================================================
-# CONSTANTS
-# ============================================================================
-
+ 
 WIDTH, HEIGHT = 1800, 1000
 FPS = 60
 
@@ -42,10 +28,7 @@ COLORS = {
     'price_peak': (244, 67, 54),
 }
 
-# ============================================================================
-# CAR CLASS
-# ============================================================================
-
+ 
 class Car:
     """Realistic car representation"""
     def __init__(self, car_id, x, y, price, duration, entry_time):
@@ -113,10 +96,7 @@ class Car:
         return True
 
 
-# ============================================================================
-# PARKING SPACES
-# ============================================================================
-
+ 
 class ParkingSpace:
     """Individual parking space"""
     def __init__(self, x, y, space_id):
@@ -215,9 +195,7 @@ class ParkingLot:
         return None
 
 
-# ============================================================================
-# PRICING ENGINE
-# ============================================================================
+ 
 
 class DynamicPricingEngine:
     """Dynamic pricing with multiple factors"""
@@ -271,9 +249,7 @@ class DynamicPricingEngine:
         }
 
 
-# ============================================================================
-# MAIN SIMULATOR
-# ============================================================================
+ 
 
 class RealisticParkingSimulator:
     """Main simulator with realistic graphics"""
