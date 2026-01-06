@@ -1,6 +1,5 @@
 """
-CURRICULUM LEARNING & DOMAIN RANDOMIZATION MODULE
-==================================================
+
 
 Implements:
 1. Curriculum Learning - Start simple, gradually increase difficulty
