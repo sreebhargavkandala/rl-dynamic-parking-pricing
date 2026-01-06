@@ -1,9 +1,4 @@
-"""
-HYPERPARAMETER OPTIMIZER
-========================
-
-Automated hyperparameter tuning using grid search, random search, and Bayesian optimization.
-"""
+ 
 
 import json
 import numpy as np
