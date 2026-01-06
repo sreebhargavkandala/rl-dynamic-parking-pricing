@@ -1,15 +1,4 @@
-"""
-═══════════════════════════════════════════════════════════════════════════════
-    BEST AGENT TRAINING - OPTIMIZED FOR MAXIMUM PERFORMANCE
-═══════════════════════════════════════════════════════════════════════════════
-
-Trains A2C agent with optimal hyperparameters for parking pricing domain.
-Expected performance:
-  - Best reward: $4,500 - $5,500
-  - Episode duration: 288 steps (24 hours)
-  - Convergence: ~150-250 episodes
-  - Runtime: 20-50 minutes (CPU: slower, GPU: faster)
-"""
+ 
 
 import sys
 from pathlib import Path
@@ -42,9 +31,7 @@ def main():
     print("PARKING PRICING RL - BEST AGENT TRAINING")
     print("=" * 80)
     
-    # =========================================================================
-    # STEP 1: SETUP ENVIRONMENT
-    # =========================================================================
+    
     print("\n[1/3] Setting up environment...")
     
     env = ParkingPricingEnv(
@@ -63,9 +50,7 @@ def main():
     print(f"  - State space: 5 dimensions [occupancy, time, demand, price_t-1, price_t-2]")
     print(f"  - Action space: Continuous pricing")
     
-    # =========================================================================
-    # STEP 2: SETUP A2C AGENT WITH OPTIMIZED HYPERPARAMETERS
-    # =========================================================================
+  
     print("\n[2/3] Setting up A2C agent with optimized hyperparameters...")
     
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -94,10 +79,7 @@ def main():
     print(f"  - Gamma: {config.gamma}")
     print(f"  - Entropy coefficient: {config.entropy_coef}")
     print(f"  - Device: {device.upper()}")
-    
-    # =========================================================================
-    # STEP 3: TRAIN AGENT
-    # =========================================================================
+     
     print("\n[3/3] Training agent (this may take 20-50 minutes)...")
     print("-" * 80)
     
@@ -171,11 +153,9 @@ def main():
                 print(f"  → Average reward (last 50 eps): ${avg_reward_50:.2f}")
                 print(f"  → Best reward so far: ${best_reward:.2f}")
         
-        # =====================================================================
-        # TRAINING COMPLETE
-        # =====================================================================
+        
         print("-" * 80)
-        print("\n✓ TRAINING COMPLETE!")
+        print("\n TRAINING COMPLETE!")
         print(f"  - Total episodes: {episode}")
         print(f"  - Best reward: ${best_reward:.2f}")
         print(f"  - Average reward (last 100): ${np.mean(history['reward'][-100:]):.2f}")
