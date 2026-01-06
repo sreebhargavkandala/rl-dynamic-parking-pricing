@@ -17,7 +17,7 @@ try:
     A2C_AVAILABLE = True
 except ImportError:
     A2C_AVAILABLE = False
-    print("⚠️ A2C agent not available, using fallback Q-Learning")
+    print(" A2C agent not available, using fallback Q-Learning")
 
 pygame.init()
 
