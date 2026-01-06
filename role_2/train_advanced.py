@@ -1,10 +1,4 @@
-"""
-ADVANCED TRAINING SCRIPT - Simplified
-====================================
-
-Trains the advanced agent without baseline comparison.
-Results are saved for later analysis.
-"""
+ 
 
 import argparse
 import logging
