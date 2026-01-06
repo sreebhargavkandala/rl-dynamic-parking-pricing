@@ -1,27 +1,23 @@
 """
-ROLE 1: Reward Function Implementation
+Reward Function Implementation
 
-Detailed implementation and explanation of the reward function.
+ 
 """
 
 import numpy as np
 from typing import Dict, Tuple
 
 
-# ==============================================================================
-# REWARD FUNCTION MATHEMATICAL DEFINITION
-# ==============================================================================
-
+ 
 REWARD_FUNCTION_MATH = """
-REWARD FUNCTION: MATHEMATICAL FORMULATION
-==========================================
+
 
 The reward function r(s, a) is a composite of three components:
 
 r(s, a) = λ_rev × R_revenue(s, a) + λ_occ × R_occupancy(s) + λ_vol × R_volatility(a, a_prev)
 
 COMPONENT 1: REVENUE REWARD
-============================
+ 
 R_revenue(s, a) = occupancy × capacity × price / capacity
                 = occupancy × price
                 
@@ -42,7 +38,7 @@ Why this component?
 - Normalized by capacity for scale independence
 
 COMPONENT 2: OCCUPANCY CONTROL REWARD
-======================================
+ 
 R_occupancy(s) = -α × (target_occ - occupancy)²
 
 Where:
@@ -69,7 +65,7 @@ Why this component?
 - Prevents: extreme occupancy swings
 
 COMPONENT 3: VOLATILITY PENALTY
-================================
+ 
 R_volatility(a, a_prev) = -β × |price_t - price_t-1|
 
 Where:
@@ -95,7 +91,7 @@ Why this component?
 - Encourages: smooth, gradual pricing adjustments
 
 COMBINED REWARD FUNCTION
-========================
+ 
 r(s, a) = 1.0 × R_revenue + (-0.5) × R_occupancy + (-0.1) × R_volatility
 
 With weights: λ_rev = 1.0, λ_occ = 0.5, λ_vol = 0.1
@@ -115,7 +111,7 @@ Interpretation:
 - Agent learns to adjust prices to maximize revenue while maintaining stability
 
 WEIGHT INTERPRETATION
-====================
+ 
 Why λ_rev = 1.0, λ_occ = 0.5, λ_vol = 0.1?
 
 Priority Ranking:
