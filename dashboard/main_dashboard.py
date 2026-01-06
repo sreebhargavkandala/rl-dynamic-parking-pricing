@@ -1,15 +1,8 @@
 """
-╔════════════════════════════════════════════════════════════════════════════╗
-║                                                                            ║
-║              DYNAMIC PARKING PRICING - INTELLIGENT DASHBOARD              ║
-║                                                                            ║
-║  An advanced reinforcement learning system for real-time parking pricing  ║
-║  using Actor-Critic (A2C) algorithms with deep neural networks            ║
-║                                                                            ║
-╚════════════════════════════════════════════════════════════════════════════╝
+
 
 PROJECT OVERVIEW:
-=================
+
 This project implements an intelligent dynamic parking pricing system using
 reinforcement learning. The system learns to optimize pricing decisions to:
 
@@ -19,11 +12,11 @@ reinforcement learning. The system learns to optimize pricing decisions to:
 4. ADAPT DYNAMICALLY: Learn patterns from parking demand and adjust in real-time
 
 TECHNICAL STACK:
-================
+
 - Algorithm: Actor-Critic (A2C) - Deep Reinforcement Learning
 - Architecture: Dual Neural Networks (Actor + Critic)
 - Training Time: ~2 minutes for 500 episodes
-- Best Performance: $4,651 average revenue per day
+- Best Performance: £4,651 average revenue per day
 - Environment: Custom OpenAI Gym-based parking simulator
 
 KEY METRICS TRACKED:
@@ -62,10 +55,7 @@ except ImportError as e:
 
 pygame.init()
 
-# ════════════════════════════════════════════════════════════════════════════
-# CONSTANTS & STYLING
-# ════════════════════════════════════════════════════════════════════════════
-
+ 
 WIDTH, HEIGHT = 1920, 1080
 FPS = 30
 GRID_SIZE = 20
@@ -97,11 +87,7 @@ FONT_LARGE = pygame.font.Font(None, 28)
 FONT_MEDIUM = pygame.font.Font(None, 24)
 FONT_SMALL = pygame.font.Font(None, 18)
 FONT_TINY = pygame.font.Font(None, 14)
-
-# ════════════════════════════════════════════════════════════════════════════
-# SIMULATION ENGINE
-# ════════════════════════════════════════════════════════════════════════════
-
+ 
 class DashboardSimulator:
     """Manages parking lot simulation and RL agent integration"""
     
@@ -253,10 +239,7 @@ class DashboardSimulator:
             'total_revenue': sum(self.revenue_history),
         }
 
-# ════════════════════════════════════════════════════════════════════════════
-# VISUALIZATION COMPONENTS
-# ════════════════════════════════════════════════════════════════════════════
-
+ 
 class DashboardRenderer:
     """Renders dashboard components"""
     
@@ -370,10 +353,7 @@ class DashboardRenderer:
                                        True, COLORS['success'])
         self.screen.blit(status_text, (x, y + 85))
 
-# ════════════════════════════════════════════════════════════════════════════
-# MAIN DASHBOARD CLASS
-# ════════════════════════════════════════════════════════════════════════════
-
+ 
 class MainDashboard:
     """Main dashboard application"""
     
@@ -414,10 +394,7 @@ class MainDashboard:
         # Get stats
         stats = self.simulator.get_current_stats()
         
-        # ════════════════════════════════════════════════════════════════════
-        # ROW 1: KEY METRICS (Cars, Price, Occupancy%)
-        # ════════════════════════════════════════════════════════════════════
-        
+ 
         # Cars in lot
         self.renderer.draw_metric_box(20, 130, 280, 150, "🅿 CARS PARKED",
                                      stats['cars_parked'], "/ " + str(stats['total_capacity']),
@@ -443,10 +420,7 @@ class MainDashboard:
         self.renderer.draw_metric_box(1220, 130, 280, 150, "💰 TOTAL REVENUE",
                                      stats['total_revenue'], "$", COLORS['warning'])
         
-        # ════════════════════════════════════════════════════════════════════
-        # ROW 2: OCCUPANCY PROGRESS & GRAPHS
-        # ════════════════════════════════════════════════════════════════════
-        
+       
         # Occupancy target gauge
         gauge_y = 310
         self.renderer.draw_card(20, gauge_y, 280, 180, "TARGET OCCUPANCY")
@@ -471,10 +445,7 @@ class MainDashboard:
         self.renderer.draw_graph(920, gauge_y, 580, 180, self.simulator.occupancy_history,
                                 "📊 OCCUPANCY TRENDS", COLORS['occupancy_bar'])
         
-        # ════════════════════════════════════════════════════════════════════
-        # ROW 3: DETAILED METRICS & AGENT PERFORMANCE
-        # ════════════════════════════════════════════════════════════════════
-        
+       
         details_y = 510
         
         # Price volatility
@@ -493,10 +464,7 @@ class MainDashboard:
         self.renderer.draw_metric_box(920, details_y, 280, 150, "EPISODE REWARD",
                                      stats['current_reward'], "$", COLORS['rl_accent'])
         
-        # ════════════════════════════════════════════════════════════════════
-        # ROW 4: LEARNING PERFORMANCE
-        # ════════════════════════════════════════════════════════════════════
-        
+       
         perf_y = 690
         
         # Learning curve
@@ -518,9 +486,6 @@ class MainDashboard:
             text_surf = FONT_SMALL.render(text, True, COLORS['text_secondary'])
             self.renderer.screen.blit(text_surf, (960, perf_y + 50 + i * 25))
         
-        # ════════════════════════════════════════════════════════════════════
-        # FOOTER: CONTROLS & INFO
-        # ════════════════════════════════════════════════════════════════════
         
         footer_y = HEIGHT - 40
         footer_text = "SPACE: Pause/Resume | ESC: Quit | Real-time RL Pricing Optimization"
@@ -548,10 +513,7 @@ class MainDashboard:
         pygame.quit()
         print("\n✓ Dashboard closed successfully")
 
-# ════════════════════════════════════════════════════════════════════════════
-# ENTRY POINT
-# ════════════════════════════════════════════════════════════════════════════
-
+ 
 if __name__ == "__main__":
     try:
         dashboard = MainDashboard()
