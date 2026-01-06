@@ -1,8 +1,4 @@
-"""
-
-
-Saran will replace this with real data-trained models.
-"""
+ 
 
 import logging
 import numpy as np
@@ -23,7 +19,7 @@ class SimulatorDemandModel:
     - Stochastic: realistic variability with noise
     
     Mathematical Model:
-    -------------------
+ 
     Base demand:
         D_base(t) = 0.5 + 0.35 * sin(2π(t - 0.33))
         where t ∈ [0, 1] is normalized time of day
