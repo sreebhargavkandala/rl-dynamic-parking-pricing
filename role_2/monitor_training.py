@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-"""
-TRAINING MONITOR & ANALYZER
-Monitor and analyze training progress in real-time
-"""
+ 
+ 
 
 import json
 import time
@@ -45,7 +42,7 @@ class TrainingMonitor:
         if metrics is None:
             return
         
-        print("📊 TRAINING METRICS:")
+        print(" TRAINING METRICS:")
         print(f"  Episodes completed: {metrics.get('total_episodes', '?')}")
         print(f"  Best reward: ${metrics.get('best_reward', 0):.2f}")
         print(f"  Current reward: ${metrics.get('final_reward', 0):.2f}")
@@ -62,7 +59,7 @@ class TrainingMonitor:
         """Monitor training in a loop"""
         self.print_banner()
         
-        print(f"🔍 Monitoring training in {self.results_dir.name}/\n")
+        print(f" Monitoring training in {self.results_dir.name}/\n")
         print(f"Checking every {check_interval} seconds...")
         print("Press Ctrl+C to stop monitoring\n")
         
@@ -74,7 +71,7 @@ class TrainingMonitor:
                     self.display_metrics(metrics)
                     print(f"Last update: {datetime.now().strftime('%H:%M:%S')}")
                 else:
-                    print("⏳ Still waiting for training to start...")
+                    print(" Still waiting for training to start...")
                 
                 time.sleep(check_interval)
                 print("-" * 80)
@@ -111,7 +108,7 @@ class TrainingMonitor:
         print("="*80 + "\n")
         
         # Basic stats
-        print("📈 STATISTICS:")
+        print(" STATISTICS:")
         print(f"  Total episodes: {len(rewards)}")
         print(f"  Best: ${max(rewards):.2f}")
         print(f"  Worst: ${min(rewards):.2f}")
@@ -121,7 +118,7 @@ class TrainingMonitor:
         
         # Learning progress
         if len(rewards) > 100:
-            print("\n📊 LEARNING PROGRESS:")
+            print("\n LEARNING PROGRESS:")
             first_100 = np.mean(rewards[:100])
             second_100 = np.mean(rewards[100:200]) if len(rewards) > 100 else first_100
             last_100 = np.mean(rewards[-100:])
@@ -134,7 +131,7 @@ class TrainingMonitor:
         
         # Convergence
         if len(rewards) > 200:
-            print("\n🎯 CONVERGENCE:")
+            print("\n CONVERGENCE:")
             last_50 = rewards[-50:]
             last_50_std = np.std(last_50)
             last_50_mean = np.mean(last_50)
