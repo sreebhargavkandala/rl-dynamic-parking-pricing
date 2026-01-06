@@ -1,15 +1,4 @@
-"""
-Role 4: Visualization Module for Parking Pricing Evaluation
-============================================================
-
-Provides plotting functions for:
-- Training progress visualization
-- Strategy comparison plots
-- Episode analysis
-- Results dashboard
-
-Author: Role 4 - Evaluation, Baselines & Presentation
-"""
+ 
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -33,10 +22,7 @@ plt.rcParams['axes.titlesize'] = 14
 plt.rcParams['axes.labelsize'] = 12
 
 
-# =============================================================================
-# COLOR PALETTE
-# =============================================================================
-
+ 
 COLORS = {
     'rl_agent': '#2E86AB',       # Blue
     'fixed_price': '#A23B72',    # Pink
@@ -67,10 +53,7 @@ def get_strategy_color(name: str) -> str:
         return COLORS['baseline_2']
 
 
-# =============================================================================
-# TRAINING PROGRESS PLOTS
-# =============================================================================
-
+ 
 def plot_training_progress(
     metrics_path: str,
     output_path: Optional[str] = None,
@@ -191,10 +174,7 @@ def plot_reward_distribution(
     return fig
 
 
-# =============================================================================
-# STRATEGY COMPARISON PLOTS
-# =============================================================================
-
+ 
 def plot_revenue_comparison(
     results: Dict,
     output_path: Optional[str] = None,
@@ -254,7 +234,7 @@ def plot_revenue_comparison(
     
     if output_path:
         fig.savefig(output_path, dpi=150, bbox_inches='tight')
-        print(f"✓ Saved: {output_path}")
+        print(f" Saved: {output_path}")
     
     if show:
         plt.show()
@@ -371,10 +351,7 @@ def plot_price_volatility(
     return fig
 
 
-# =============================================================================
-# EPISODE ANALYSIS PLOTS
-# =============================================================================
-
+ 
 def plot_episode_trajectory(
     prices: List[float],
     occupancies: List[float],
@@ -477,10 +454,7 @@ def plot_strategy_comparison_episode(
     return fig
 
 
-# =============================================================================
-# SUMMARY DASHBOARD
-# =============================================================================
-
+ 
 def create_summary_dashboard(
     results: Dict,
     training_metrics_path: Optional[str] = None,
@@ -557,10 +531,7 @@ def create_summary_dashboard(
     return fig
 
 
-# =============================================================================
-# STANDALONE TEST
-# =============================================================================
-
+ 
 if __name__ == "__main__":
     print("Plots module loaded successfully!")
     print("Available functions:")
