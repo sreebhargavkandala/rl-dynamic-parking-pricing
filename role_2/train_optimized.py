@@ -1,18 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-OPTIMIZED A2C AGENT TRAINING
-============================
-Best practices for training the A2C agent to maximum performance
-
-Features:
-- Optimized hyperparameters for parking pricing
-- Advanced learning rate scheduling
-- Best model checkpointing
-- Early stopping with validation
-- Comprehensive monitoring
-- Performance optimization
-"""
+ 
 
 import numpy as np
 import torch
@@ -231,7 +219,7 @@ class OptimizedTrainingPipeline:
                 
                 # Early stopping
                 if no_improvement_count >= max_no_improvement:
-                    print(f"\n⚠️  No improvement for {max_no_improvement} episodes. Stopping early.")
+                    print(f"\n  No improvement for {max_no_improvement} episodes. Stopping early.")
                     break
             
             # Training complete
@@ -291,14 +279,14 @@ class OptimizedTrainingPipeline:
         with open(metrics_path, 'w') as f:
             json.dump(metrics, f, indent=2)
         
-        print(f"✓ Metrics saved to: {metrics_path}")
+        print(f" Metrics saved to: {metrics_path}")
         
         # Full history
         history_path = self.results_dir / "training_history.json"
         with open(history_path, 'w') as f:
             json.dump(self.training_history, f, indent=2)
         
-        print(f"✓ History saved to: {history_path}")
+        print(f" History saved to: {history_path}")
         
         return metrics
     
@@ -310,7 +298,7 @@ class OptimizedTrainingPipeline:
         print("\n" + "="*80)
         print("TRAINING SUMMARY")
         print("="*80)
-        print(f"\n📊 PERFORMANCE METRICS:")
+        print(f"\n PERFORMANCE METRICS:")
         print(f"  • Best Episode Reward: ${self.best_reward:.2f}")
         print(f"  • Final Episode Reward: ${self.episode_rewards[-1]:.2f}")
         print(f"  • Average Reward: ${np.mean(self.episode_rewards):.2f}")
@@ -318,7 +306,7 @@ class OptimizedTrainingPipeline:
         print(f"  • Min Reward: ${np.min(self.episode_rewards):.2f}")
         print(f"  • Max Reward: ${np.max(self.episode_rewards):.2f}")
         
-        print(f"\n📈 LEARNING PROGRESS:")
+        print(f"\n LEARNING PROGRESS:")
         first_50_avg = np.mean(self.episode_rewards[:50]) if len(self.episode_rewards) >= 50 else np.mean(self.episode_rewards)
         last_50_avg = np.mean(self.episode_rewards[-50:]) if len(self.episode_rewards) >= 50 else np.mean(self.episode_rewards)
         improvement = ((last_50_avg - first_50_avg) / (first_50_avg + 1e-6)) * 100
@@ -327,7 +315,7 @@ class OptimizedTrainingPipeline:
         print(f"  • Last 50 avg: ${last_50_avg:.2f}")
         print(f"  • Improvement: {improvement:+.1f}%")
         
-        print(f"\n💾 MODEL & RESULTS:")
+        print(f"\n MODEL & RESULTS:")
         print(f"  • Best model: {self.best_model_path.name}")
         print(f"  • Results dir: {self.results_dir.absolute()}")
         print(f"  • Total episodes: {len(self.episode_rewards)}")
@@ -372,7 +360,7 @@ def main():
         print("  3. Analyze metrics: View training_metrics.json")
         
     except KeyboardInterrupt:
-        print("\n\n⚠️  Training interrupted by user")
+        print("\n\n  Training interrupted by user")
         metrics = pipeline.save_results()
         pipeline.print_summary()
     
