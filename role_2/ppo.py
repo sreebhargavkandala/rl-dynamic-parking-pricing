@@ -1,27 +1,4 @@
-"""
-PPO (Proximal Policy Optimization) Algorithm - Advanced RL from Scratch
 
-Implementation of Proximal Policy Optimization (PPO), one of the most advanced
-and widely-used policy gradient algorithms in modern deep RL.
-
-Paper: "Proximal Policy Optimization Algorithms" (Schulman et al., 2017)
-https://arxiv.org/abs/1707.06347
-
-Key Features:
-- Clipped objective function for stable optimization
-- Generalized Advantage Estimation (GAE) for low-variance gradients
-- Multiple epochs of optimization on collected data
-- Value network for baseline subtraction
-- Advanced numerical stability (gradient clipping, entropy bonus)
-- Support for both discrete and continuous action spaces
-
-Why PPO is State-of-the-Art:
-1. More stable than policy gradients (trust region via clipping)
-2. Better sample efficiency than A3C
-3. Simpler implementation than TRPO
-4. Used by OpenAI in real-world applications
-5. Superior performance on continuous control tasks
-"""
 
 import numpy as np
 import torch
@@ -132,24 +109,7 @@ class PPOMemory:
 
 
 class PPOAgent:
-    """
-    Proximal Policy Optimization Agent.
-    
-    Implements PPO for continuous control (parking pricing).
-    
-    Algorithm:
-    1. Collect experience with current policy
-    2. Compute advantages using GAE
-    3. Perform K epochs of mini-batch SGD:
-       a. Compute policy loss with clipped objective
-       b. Compute value function loss
-       c. Update both networks
-    
-    Clipped PPO Objective:
-    L^CLIP(θ) = Ê_t[min(r_t(θ)Â_t, clip(r_t(θ), 1-ε, 1+ε)Â_t)]
-    
-    Where r_t(θ) = π_θ(a_t|s_t) / π_{θ_old}(a_t|s_t)
-    """
+   
     
     def __init__(
         self,
