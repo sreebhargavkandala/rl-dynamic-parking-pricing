@@ -1,6 +1,6 @@
 """
-ROLE 3: Data Processing Module
-================================
+ Data Processing Module
+ 
 
 Loads, cleans, and prepares parking demand data for training.
 Supports both real datasets and synthetic data generation.
@@ -423,10 +423,7 @@ def load_or_create_dataset(
         raise FileNotFoundError(f"Dataset not found: {data_path}")
 
 
-# ============================================================================
-# MAIN: Demo usage
-# ============================================================================
-
+ 
 if __name__ == "__main__":
     print("=" * 80)
     print("ROLE 3: DATA PROCESSING MODULE")
