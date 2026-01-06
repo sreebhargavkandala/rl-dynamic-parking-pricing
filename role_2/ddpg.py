@@ -1,28 +1,4 @@
-"""
-DDPG (Deep Deterministic Policy Gradient) - Advanced Off-Policy RL
-
-Implementation of DDPG algorithm for continuous control with:
-- Deterministic policy for exploration-exploitation tradeoff
-- Target networks for training stability
-- Experience replay for sample efficiency
-- Off-policy learning for better data utilization
-
-Paper: "Continuous Control with Deep Reinforcement Learning" (Lillicrap et al., 2015)
-https://arxiv.org/abs/1509.02971
-
-Key Innovations:
-1. Deterministic policy (μ) instead of stochastic for continuous control
-2. Actor-Critic architecture with separate networks
-3. Target networks with soft updates (Polyak averaging)
-4. Experience replay for sample efficiency
-5. Off-policy learning with uniform sampling
-
-Why DDPG is Important:
-- First successful deep RL algorithm for continuous control
-- Off-policy allows for better sample efficiency than on-policy methods
-- Deterministic policy simplifies action selection
-- Foundation for more advanced algorithms (TD3, SAC)
-"""
+ 
 
 import numpy as np
 import torch
