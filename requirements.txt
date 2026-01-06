@@ -1,0 +1,27 @@
+# Requirements for Dynamic Parking Pricing Dashboard
+# Install all dependencies with: pip install -r requirements.txt
+
+# Graphics and UI
+pygame>=2.1.0
+
+# Data visualization
+matplotlib>=3.5.0
+
+# Numerical computations
+numpy>=1.21.0
+
+# Deep learning and neural networks
+torch>=1.10.0
+
+# RL environment framework
+gymnasium>=0.26.0
+
+# Optional but recommended
+scipy>=1.7.0  # Additional numerical tools
+scikit-learn>=1.0.0  # Machine learning utilities
+pandas>=1.3.0  # Data manipulation
+
+# Development (optional)
+pytest>=7.0.0  # Testing
+black>=22.0.0  # Code formatting
+pylint>=2.10.0  # Code linting
